@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COVID-19 TRACKER</title>
+  <link rel="stylesheet" href="covid.css" />
+  <link rel="stylesheet" href="./fontawesome-free-5.13.0-web/css/all.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico&display=swap">
+  <link rel="stylesheet" href=" https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@500&display=swap">
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#8BC37A">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#8BC37A">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#8BC37A">
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon_package_v0.16/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon_package_v0.16/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon_package_v0.16/favicon-16x16.png">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+  <link rel="mask-icon" href="./favicon_package_v0.16/safari-pinned-tab.svg" color="#318243">
+  <meta name="msapplication-TileColor" content="#2d89ef">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+  <!-- <div class="totoparrow">
+    <span>
+      <a href="#top" class="fas fa-chevron-circle-up totop"></a>
+    </span>
+  </div> -->
+
+
+  <!-- //***************LOADING********************** -->
+  <div class="loader-wrapper">
+    <div class="name-loader">
+      <h3>TRACKER <span>INITIATING</span></h3>
+    </div>
+    <div class="pulse-container">
+      <div class="pulse-bubble pulse-bubble-1"></div>
+      <div class="pulse-bubble pulse-bubble-2"></div>
+      <div class="pulse-bubble pulse-bubble-3"></div>
+    </div>
+    <div class="myname">
+      <h4>MADE BY <span>ANIRBAN GHOSH</span> WITH <i class="fas fa-heart"></i></h4>
+    </div>
+
+  </div>
+
+  <!-- //***************LOADING END********************** -->
+
+  <div id="top" class="navbar-wrapper">
+    <div class="navbar">
+      <div class="mainheading">
+        <h2 class="title">C<i class="fas fa-virus"></i>VID-19 TRACKER</h2>
+
+      </div>
+
+      <!-- <div class="nav-controls">
+        <a href="#">DISABLED</a>
+        <a href="#countrywise">COUNTRY STATUS</a>
+        <a href="#top3">TOP 5 COUNTRIES</a>
+      </div> -->
+    </div>
+  </div>
+  <div class="world-wrapper">
+    <div class="worldsheading">
+      <h3 class="worldtitle">
+
+        WORLD STATUS</h3>
+
+    </div>
+    <div class="world-stat">
+      <div class="word-conf">
+        <h3 class="world-conf-title">CONFIRMED</h3>
+        <sec class="world-loader">
+          <h4 class="world-conf-num">0</h4>
+          <h4 class="world-conf-num-new">0</h4>
+        </sec>
+      </div>
+      <div class="word-recf">
+        <h3 class="world-recf-title">RECOVERED</h3>
+        <h4 class="world-recf-num">0</h4>
+      </div>
+      <div class="word-dea">
+        <h3 class="world-dea-title">DEATH</h3>
+        <sec class="world-loader">
+
+          <h4 class="world-dea-num">0</h4>
+          <h4 class="world-dea-num-new">0</h4>
+        </sec>
+      </div>
+    </div>
+    <div class="chart-heading">
+      <div class="chart-heading-inside">
+
+        <h3>GRAPHICAL STATUS </h3>
+        <div class="graphimgcont">
+
+          <img class="graphimg" src="./images/statistics.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="chart-wrapper">
+
+      <div class="chart">
+        <h4 class="label">LAST 5 DAYS NEW CASES WORLD-WIDE</h4>
+        <div class="box">
+          <div class="loader-11"></div>
+        </div>
+        <canvas id="myChart"></canvas>
+      </div>
+      <div class="chart">
+        <h4 class="label">LAST 5 DAYS NEW DEATHS WORLD-WIDE</h4>
+        <div class="box2">
+          <div class="loader-11"></div>
+        </div>
+        <canvas id="myChart2"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="mainsection">
+    <div id="countrywise" class="mainsec-heading">
+      <h3 class="mainsec-title"> SELECT BY COUNTRY</h3>
+    </div>
+    <div class="input">
+      <div class="country-list">
+        <h3 class="country-tag">SELECT COUNTRY</h3>
+        <input type="text" list="country" id="coun" placeholder="SELECT COUNTRY" onfocus="focuson()">
+        <datalist id="country" name="country">
+          <option value="Afghanistan">Afghanistan</option>
+          <option value="Africa">Africa</option>
+          <option value="Albania">Albania</option>
+          <option value="Algeria">Algeria</option>
+          <option value="Andorra">Andorra</option>
+          <option value="Angola">Angola</option>
+          <option value="Antigua-and-Barbuda">Antigua & Barbuda</option>
+          <option value="Argentina">Argentina</option>
+          <option value="Armenia">Armenia</option>
+          <option value="Aruba">Aruba</option>
+          <option value="Australia">Australia</option>
+          <option value="Austria">Austria</option>
+          <option value="Azerbaijan">Azerbaijan</option>
+          <option value="Bahamas">Bahamas</option>
+          <option value="Bahrain">Bahrain</option>
+          <option value="Bangladesh">Bangladesh</option>
+          <option value="Barbados">Barbados</option>
+          <option value="Belarus">Belarus</option>
+          <option value="Belgium">Belgium</option>
+          <option value="Benin">Benin</option>
+          <option value="Bermuda">Bermuda</option>
+          <option value="Bhutan">Bhutan</option>
+          <option value="Bolivia">Bolivia</option>
+          <option value="Bosnia-and-Herzegovina">Bosnia & Herzegovina</option>
+          <option value="Brazil">Brazil</option>
+          <option value="Brunei">Brunei</option>
+          <option value="Bulgaria">Bulgaria</option>
+          <option value="Burkina-Faso">Burkina Faso</option>
+          <option value="Cambodia">Cambodia</option>
+          <option value="Cameroon">Cameroon</option>
+          <option value="Canada">Canada</option>
+
+          <option value="CAR">C A R</option>
+          <option value="Cayman-Islands">Cayman Islands</option>
+          <option value="Chad">Chad</option>
+          <option value="Channel-Islands">Channel Islands</option>
+          <option value="Chile">Chile</option>
+          <option value="China">China</option>
+          <option value="Colombia">Colombia</option>
+          <option value="Congo">Congo</option>
+          <option value="Cook Islands">Cook Islands</option>
+          <option value="Costa-Rica">Costa Rica</option>
+          <option value="Cote DIvoire">Cote DIvoire</option>
+          <option value="Croatia">Croatia</option>
+          <option value="Cuba">Cuba</option>
+          <option value="Cyprus">Cyprus</option>
+
+          <option value="Denmark">Denmark</option>
+          <option value="Djibouti">Djibouti</option>
+          <option value="Dominica">Dominica</option>
+          <option value="Dominican-Republic">Dominican Republic</option>
+
+          <option value="Ecuador">Ecuador</option>
+          <option value="Egypt">Egypt</option>
+          <option value="El-Salvador">El Salvador</option>
+          <option value="Equatorial-Guinea">Equatorial Guinea</option>
+          <option value="Eritrea">Eritrea</option>
+          <option value="Estonia">Estonia</option>
+          <option value="Ethiopia">Ethiopia</option>
+
+          <option value="Falkland Islands">Falkland Islands</option>
+          <option value="Faroe-Islands">Faroe Islands</option>
+          <option value="Fiji">Fiji</option>
+          <option value="Finland">Finland</option>
+          <option value="France">France</option>
+          <option value="French-Guiana">French Guiana</option>
+          <option value="French-Polynesia">French Polynesia</option>
+          <option value="French Southern Ter">French Southern Ter</option>
+
+          <option value="Gabon">Gabon</option>
+          <option value="Gambia">Gambia</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Germany">Germany</option>
+          <option value="Ghana">Ghana</option>
+          <option value="Gibraltar">Gibraltar</option>
+          <option value="Great-Britain">Great Britain</option>
+          <option value="Greece">Greece</option>
+          <option value="Greenland">Greenland</option>
+          <option value="Grenada">Grenada</option>
+          <option value="Guadeloupe">Guadeloupe</option>
+          <option value="Guam">Guam</option>
+          <option value="Guatemala">Guatemala</option>
+          <option value="Guinea">Guinea</option>
+          <option value="Guyana">Guyana</option>
+          <option value="Haiti">Haiti</option>
+          <option value="Hawaii">Hawaii</option>
+          <option value="Honduras">Honduras</option>
+          <option value="Hong-Kong">Hong Kong</option>
+          <option value="Hungary">Hungary</option>
+
+          <option value="Iceland">Iceland</option>
+          <option value="Indonesia">Indonesia</option>
+          <option value="India">India</option>
+          <option value="Iran">Iran</option>
+          <option value="Iraq">Iraq</option>
+          <option value="Ireland">Ireland</option>
+          <option value="Isle-of-Man">Isle of Man</option>
+          <option value="Israel">Israel</option>
+          <option value="Italy">Italy</option>
+
+          <option value="Jamaica">Jamaica</option>
+          <option value="Japan">Japan</option>
+          <option value="Jordan">Jordan</option>
+
+          <option value="Kazakhstan">Kazakhstan</option>
+          <option value="Kenya">Kenya</option>
+          <option value="Kiribati">Kiribati</option>
+          <option value="Korea North">Korea North</option>
+          <option value="S-Korea">South Korea</option>
+          <option value="Kuwait">Kuwait</option>
+          <option value="Kyrgyzstan">Kyrgyzstan</option>
+
+          <option value="Laos">Laos</option>
+          <option value="Latvia">Latvia</option>
+          <option value="Lebanon">Lebanon</option>
+          <option value="Lesotho">Lesotho</option>
+          <option value="Liberia">Liberia</option>
+          <option value="Libya">Libya</option>
+          <option value="Liechtenstein">Liechtenstein</option>
+          <option value="Lithuania">Lithuania</option>
+          <option value="Luxembourg">Luxembourg</option>
+          <option value="Macau">Macau</option>
+          <option value="Macedonia">Macedonia</option>
+          <option value="Madagascar">Madagascar</option>
+          <option value="Malaysia">Malaysia</option>
+          <option value="Malawi">Malawi</option>
+          <option value="Maldives">Maldives</option>
+          <option value="Mali">Mali</option>
+          <option value="Malta">Malta</option>
+          <option value="Marshall-Islands">Marshall Islands</option>
+          <option value="Martinique">Martinique</option>
+          <option value="Mauritania">Mauritania</option>
+          <option value="Mauritius">Mauritius</option>
+          <option value="Mayotte">Mayotte</option>
+          <option value="Mexico">Mexico</option>
+          <option value="Midway Islands">Midway Islands</option>
+          <option value="Moldova">Moldova</option>
+          <option value="Monaco">Monaco</option>
+          <option value="Mongolia">Mongolia</option>
+          <option value="Montserrat">Montserrat</option>
+          <option value="Morocco">Morocco</option>
+          <option value="Mozambique">Mozambique</option>
+          <option value="Myanmar">Myanmar</option>
+          <option value="Nambia">Nambia</option>
+          <option value="Nauru">Nauru</option>
+          <option value="Nepal">Nepal</option>
+          <option value="Netherland Antilles">Netherland Antilles</option>
+          <option value="Netherlands">Netherlands (Holland, Europe)</option>
+          <option value="Nevis">Nevis</option>
+          <option value="New-Caledonia">New Caledonia</option>
+          <option value="New-Zealand">New Zealand</option>
+          <option value="Nicaragua">Nicaragua</option>
+          <option value="Niger">Niger</option>
+          <option value="Nigeria">Nigeria</option>
+          <option value="Niue">Niue</option>
+          <option value="Norfolk-Island">Norfolk Island</option>
+          <option value="Norway">Norway</option>
+          <option value="Oman">Oman</option>
+          <option value="Pakistan">Pakistan</option>
+          <option value="Palau-Island">Palau Island</option>
+          <option value="Palestine">Palestine</option>
+          <option value="Panama">Panama</option>
+          <option value="Papua-New-Guinea">Papua New Guinea</option>
+          <option value="Paraguay">Paraguay</option>
+          <option value="Peru">Peru</option>
+          <option value="Phillipines">Philippines</option>
+          <option value="Pitcairn-Island">Pitcairn Island</option>
+          <option value="Poland">Poland</option>
+          <option value="Portugal">Portugal</option>
+          <option value="Puerto-Rico">Puerto Rico</option>
+          <option value="Qatar">Qatar</option>
+          <option value="Republic-of-Montenegro">Republic of Montenegro</option>
+          <option value="Republic-of-Serbia">Republic of Serbia</option>
+          <option value="Reunion">Reunion</option>
+          <option value="Romania">Romania</option>
+          <option value="Russia">Russia</option>
+          <option value="Rwanda">Rwanda</option>
+          <option value="St.-Vincent-Grenadines"">St Vincent Grenadines</option>
+           
+          <option value=" Saint-Lucia">St Lucia</option>
+          <option value="Saint-Martin">St Maarten</option>
+          <option value="San-Marino">San Marino</option>
+          <option value="Saudi-Arabia">Saudi Arabia</option>
+          <option value="Senegal">Senegal</option>
+          <option value="Seychelles">Seychelles</option>
+          <option value="Singapore">Singapore</option>
+          <option value="Slovakia">Slovakia</option>
+          <option value="Slovenia">Slovenia</option>
+          <option value="Solomon Islands">Solomon Islands</option>
+          <option value="Somalia">Somalia</option>
+          <option value="South-Africa">South Africa</option>
+          <option value="Spain">Spain</option>
+          <option value="Sri-Lanka">Sri Lanka</option>
+          <option value="Sudan">Sudan</option>
+          <option value="Suriname">Suriname</option>
+          <option value="Swaziland">Swaziland</option>
+          <option value="Sweden">Sweden</option>
+          <option value="Switzerland">Switzerland</option>
+          <option value="Syria">Syria</option>
+          <option value="Taiwan">Taiwan</option>
+          <option value="Tanzania">Tanzania</option>
+          <option value="Thailand">Thailand</option>
+          <option value="Togo">Togo</option>
+          <option value="Trinidad-and-Tobago">Trinidad & Tobago</option>
+          <option value="Tunisia">Tunisia</option>
+          <option value="Turkey">Turkey</option>
+          <option value="Timor-Leste">Timor-Leste</option>
+          <option value="Tuvalu">Tuvalu</option>
+          <option value="Uganda">Uganda</option>
+          <option value="UK">United Kingdom</option>
+          <option value="Ukraine">Ukraine</option>
+          <option value="UAE">United Arab Emirates</option>
+          <option value="U.S.-Virgin-Islands">Virgin Islands(US)</option>
+          <option value="USA">United States of America</option>
+          <option value="Uraguay">Uruguay</option>
+          <option value="Uzbekistan">Uzbekistan</option>
+          <option value="Vanuatu">Vanuatu</option>
+          <option value="Vatican-City">Vatican City State</option>
+          <option value="Venezuela">Venezuela</option>
+          <option value="Vietnam">Vietnam</option>
+          <option value="Zambia">Zambia</option>
+          <option value="Zimbabwe">Zimbabwe</option>
+
+        </datalist>
+      </div>
+      <div class="submit-covid">
+        <button type="submit" onclick="fetchcovid()" class="covid-btn">CHECK</button>
+      </div>
+      <div class="reset-covid">
+        <button class="reset-covid-btn" onclick="resetcovid()" type="submit">RESET</button>
+      </div>
+    </div>
+    <div class="covid-result">
+      <div class="confirmed">
+
+        <h3>CONFIRMED</h3>
+        <section>
+          <h4 class="con"></h4>
+          <h4 class="newc"></h4>
+        </section>
+
+      </div>
+      <div class="active">
+        <h3>ACTIVE</h3>
+        <section>
+
+          <h4 class="act"></h4>
+        </section>
+
+      </div>
+      <div class="death">
+
+        <h3>DEATHS</h3>
+        <section>
+          <h4 class="dea"></h4>
+          <h4 class="newd"></h4>
+        </section>
+
+      </div>
+      <div class="recovered">
+        <h3>RECOVERED</h3>
+        <section>
+
+          <h4 class="rec"></h4>
+        </section>
+
+      </div>
+    </div>
+  </div>
+  <div class="top5">
+    <div id="top3" class="top5header">
+      <h4>
+        TOP 5 COVID-19 AFFECTED COUNTRIES
+      </h4>
+    </div>
+    <div class="top5-center">
+      <div class="card c1">
+        <div class="card-img-container1">
+
+        </div>
+        <div class="country-name">
+          <h2 class="card1-country">COUNTRY NAME</h2>
+        </div>
+        <div class="card-details">
+          <div class="card-confirmed">
+            <h3>CONFIRMED</h3>
+            <article>
+
+              <h4 class="con1">NA</h4>
+              <h5 class="confirm_new_card1">0</h5>
+            </article>
+
+          </div>
+          <div class="card-active">
+            <h3>ACTIVE</h3>
+            <h4 class="act1">NA</h4>
+
+          </div>
+          <div class="card-death">
+            <h3>DEATHS</h3>
+            <article>
+              <h4 class="dea1">NA</h4>
+              <h5 class="death_new_card1">0</h5>
+            </article>
+
+          </div>
+          <div class="card-recovered">
+            <h3>RECOVERED</h3>
+            <h4 class="rec1">NA</h4>
+
+          </div>
+
+
+        </div>
+
+      </div>
+      <div class="card c2">
+        <div class="card-img-container2">
+
+
+        </div>
+        <div class="country-name">
+          <h2 class="card2-country">COUNTRY NAME</h2>
+        </div>
+        <div class="card-details">
+          <div class="card-confirmed">
+            <h3>CONFIRMED</h3>
+            <article>
+
+              <h4 class="con2"> NA </h3>
+                <h5 class="confirm_new_card2">0</h5>
+            </article>
+          </div>
+          <div class="card-active">
+            <h3>ACTIVE</h3>
+            <h4 class="act2">NA</h4>
+
+          </div>
+          <div class="card-death">
+            <h3>DEATHS</h3>
+            <article>
+              <h4 class="dea2">NA</h4>
+              <h5 class="death_new_card2">0</h5>
+            </article>
+
+          </div>
+          <div class="card-recovered">
+            <h3>RECOVERED</h3>
+            <h4 class="rec2">NA</h4>
+
+          </div>
+
+
+        </div>
+
+      </div>
+      <div class="card c3">
+        <div class="card-img-container3 ">
+
+
+        </div>
+        <div class="country-name">
+          <h2 class="card3-country">COUNTRY NAME</h2>
+        </div>
+        <div class="card-details">
+          <div class="card-confirmed">
+            <h3>CONFIRMED</h3>
+            <article>
+
+              <h4 class="con3">NA</h4>
+              <h5 class="confirm_new_card3">0</h5>
+            </article>
+
+          </div>
+          <div class="card-active">
+            <h3>ACTIVE</h3>
+            <h4 class="act3">NA</h4>
+
+          </div>
+          <div class="card-death">
+            <h3>DEATHS</h3>
+            <article>
+              <h4 class="dea3">NA</h4>
+              <h5 class="death_new_card3">0</h5>
+            </article>
+
+          </div>
+          <div class="card-recovered">
+            <h3>RECOVERED</h3>
+            <h4 class="rec3">NA</h4>
+
+          </div>
+
+
+        </div>
+
+      </div>
+      <div class="card c4">
+        <div class="card-img-container4 ">
+
+
+        </div>
+        <div class="country-name">
+          <h2 class="card4-country">COUNTRY NAME</h2>
+        </div>
+        <div class="card-details">
+          <div class="card-confirmed">
+            <h3>CONFIRMED</h3>
+            <article>
+
+              <h4 class="con4">NA</h4>
+              <h5 class="confirm_new_card4">0</h5>
+            </article>
+
+          </div>
+          <div class="card-active">
+            <h3>ACTIVE</h3>
+            <h4 class="act4">NA</h4>
+
+          </div>
+          <div class="card-death">
+            <h3>DEATHS</h3>
+            <article>
+              <h4 class="dea4">NA</h4>
+              <h5 class="death_new_card4">0</h5>
+            </article>
+
+          </div>
+          <div class="card-recovered">
+            <h3>RECOVERED</h3>
+            <h4 class="rec4">NA</h4>
+
+          </div>
+
+
+        </div>
+
+      </div>
+      <div class="card c5">
+        <div class="card-img-container5 ">
+
+        </div>
+        <div class="country-name">
+          <h2 class="card5-country">COUNTRY NAME</h2>
+        </div>
+        <div class="card-details">
+          <div class="card-confirmed">
+            <h3>CONFIRMED</h3>
+            <article>
+
+              <h4 class="con5">NA</h4>
+              <h5 class="confirm_new_card5">0</h5>
+            </article>
+
+          </div>
+          <div class="card-active">
+            <h3>ACTIVE</h3>
+            <h4 class="act5">NA</h4>
+
+          </div>
+          <div class="card-death">
+            <h3>DEATHS</h3>
+            <article>
+              <h4 class="dea5">NA</h4>
+              <h5 class="death_new_card5">0</h5>
+            </article>
+
+          </div>
+          <div class="card-recovered">
+            <h3>RECOVERED</h3>
+            <h4 class="rec5">NA</h4>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <div class="footer-wrapper">
+    <div class="footer">
+      <div class="footertext">
+        <h4>MADE WITH <span><i class="fas fa-heart"></i></span> & <span><i class="fas fa-coffee"></i></span> BY <span>
+            ANIRBAN
+            GHOSH </span> </h4>
+      </div>
+      <div class="siteinfo">
+        <h4> <span class="copyright">&copy;</span> 2020-2021 <span>COVID-19 TRACKER</span> ALL RIGHT RESERVED</h4>
+      </div>
+      <div class="sns">
+        <div class="sns-heading">
+          <h4>you can find me at</h4>
+        </div>
+        <div class="sns-links">
+          <div class="fb">
+            <a target="_blank" href="https://www.facebook.com/anirbanneonghosh"
+              class="fab fa-facebook fbicon"><span>Anirban Ghosh
+              </span>
+            </a>
+          </div>
+
+          <div class="insta">
+            <a target="_blank" href="https://www.instagram.com/ani_itsme/"
+              class="fab fa-instagram instaicon"><span>Ani_itsme</span>
+            </a>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="test.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/*"
+  to = "/covid.html"
+  status = 200
